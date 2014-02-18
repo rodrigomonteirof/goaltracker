@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
   before_action :require_authentication
 
   def index
-    @goals = @user.goals
+    @goals = current_user.goals
   end
 
   def show
