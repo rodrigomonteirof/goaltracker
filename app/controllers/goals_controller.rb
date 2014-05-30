@@ -20,7 +20,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user = current_user
 
-    if @goal.save
+    if @goal.valid? and @goal.save
       redirect_to @goal, notice: 'Goal was successfully created.'
     else
       render action: 'new'
@@ -28,7 +28,7 @@ class GoalsController < ApplicationController
   end
 
   def update
-    if @goal.update(goal_params)
+    if @goal.valid? and @goal.update(goal_params)
       redirect_to @goal, notice: 'Goal was successfully updated.'
     else
       render action: 'edit'
