@@ -12,4 +12,12 @@ class UserMailer < ActionMailer::Base
       )
   end
 
+  def alarm_goal(user)
+    mail(
+      to: user.email,
+      bcc: 'signups@goaltracker.com',
+      subject: 'Objetivo de hoje ainda não foi preenchido'
+    )
+  end
+
 end

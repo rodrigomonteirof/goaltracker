@@ -1,9 +1,16 @@
 Goaltracker::Application.routes.draw do
   root :to => "home#index"
-  resources :goals
+  resources :goals do
+    resources :goal_histories
+  end
   resources :users
   match "login", to: 'users#login', via: :get
   match "login", to: 'users#do_login', via: :post
+
+resque_web_constraint = lambda { |request| request.remote_ip == '127.0.0.1' }
+constraints resque_web_constraint do
+  mount ResqueWeb::Engine => "/resque_web"
+end
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
@@ -45,7 +52,7 @@ Goaltracker::Application.routes.draw do
   #       get 'recent', on: :collection
   #     end
   #   end
-  
+
   # Example resource route with concerns:
   #   concern :toggleable do
   #     post 'toggle'

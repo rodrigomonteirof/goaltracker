@@ -7,6 +7,9 @@ class GoalsController < ApplicationController
   end
 
   def show
+    @goal_history = GoalHistory.new
+    @goal_history.goal = @goal
+    puts "@@@@@@@@@@@@@@@@@@@@@@@@@ #{@goal_history.inspect}"
   end
 
   def new

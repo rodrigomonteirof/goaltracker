@@ -42,8 +42,13 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-# gem 'debugger', group: [:development, :test]
+gem 'debugger', group: [:development, :test]
+
+gem 'rspec'
 
 ###########
 # Project #
 ###########
+
+gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
+gem 'resque-web', require: 'resque_web'

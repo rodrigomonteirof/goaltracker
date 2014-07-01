@@ -11,7 +11,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140205211640) do
+ActiveRecord::Schema.define(version: 20140630162222) do
+
+  create_table "goal_histories", force: true do |t|
+    t.date     "date"
+    t.boolean  "response"
+    t.integer  "goal_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "goals", force: true do |t|
     t.string   "name"

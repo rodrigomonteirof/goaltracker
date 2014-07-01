@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
   has_many :goals
-  
+
   validates :email, uniqueness: true
   validates :password, confirmation: true
 
