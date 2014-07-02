@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
   def show
     @goal_history = GoalHistory.new
     @goal_history.goal = @goal
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@ #{@goal_history.inspect}"
+    @date = DateTime.now
   end
 
   def new
@@ -51,4 +51,5 @@ class GoalsController < ApplicationController
     def goal_params
       params.require(:goal).permit(:name, :description, :start_date, :alarm_hour, :frequency, :frequency_type, :until_date)
     end
+
 end

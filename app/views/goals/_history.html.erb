@@ -1,8 +1,9 @@
-<%= form_for [@goal_history.goal, @goal_history], :remote => true do |f| %>
-<%= f.hidden_field :date, :value => DateTime.now.to_date %>
-<%= f.radio_button :response, true %>
+<%= date %>
+<%= form_for [@goal_history.goal, @goal_history], :html => {:id => date }, :remote => true do |f| %>
+<%= f.hidden_field :date, :value => date %>
+<%= f.radio_button :response, true, :onclick => "submitForm('#{date}');"%>
 <%= f.label "true" %>
-<%= f.radio_button :response, false %>
+<%= f.radio_button :response, false, :onclick => "submitForm('#{date}');"%>
 <%= f.label "false" %>
-<%= f.submit %>
 <% end %>
+

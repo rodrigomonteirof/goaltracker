@@ -8,9 +8,4 @@ class GoalHistoriesController < ApplicationController
     head :ok
   end
 
-  private
-  def goal_params
-    params.require(:goal_history).permit(:response, :date)
-  end
-
 end

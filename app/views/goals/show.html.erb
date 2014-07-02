@@ -10,7 +10,9 @@
   <%= @goal.description %>
 </p>
 
-<%= render 'history' %>
+<% for i in 1..@date.day %>
+  <%= render 'history', :date => Date.new(@date.year,@date.month, i) %>
+<% end %>
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>
