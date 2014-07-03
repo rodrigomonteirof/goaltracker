@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
   def show
     @goal_history = GoalHistory.new
     @goal_history.goal = @goal
-    @date = DateTime.now
+    @date_limit = @goal.date_limit(params)
   end
 
   def new

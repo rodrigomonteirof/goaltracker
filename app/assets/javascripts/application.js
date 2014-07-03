@@ -18,3 +18,4 @@
 function submitForm(id){
   $('#' + id).submit();
 }
+

@@ -1,9 +1,25 @@
-<%= date %>
-<%= form_for [@goal_history.goal, @goal_history], :html => {:id => date }, :remote => true do |f| %>
-<%= f.hidden_field :date, :value => date %>
-<%= f.radio_button :response, true, :onclick => "submitForm('#{date}');"%>
-<%= f.label "true" %>
-<%= f.radio_button :response, false, :onclick => "submitForm('#{date}');"%>
-<%= f.label "false" %>
+<% history = @goal.goal_histories.find_by date: date %>
+
+<div id="div_<%= date %>">
+
+<% if history.present? and not history.response.nil? %>
+
+  <h3><%= date %> - <%= history.response %></h3>
+
+<% else %>
+
+  <h3><%= date %></h3>
+
+  <%= form_for [@goal_history.goal, @goal_history], :html => {:id => "form_#{date}" }, :remote => true do |f| %>
+    <%= f.hidden_field :date, :value => date %>
+    <%= f.radio_button :response, true, :onclick => "submitForm('form_#{date}');"%>
+    <%= f.label "true" %>
+    <%= f.radio_button :response, false, :onclick => "submitForm('form_#{date}');"%>
+    <%= f.label "false" %>
+  <% end %>
+
 <% end %>
+
+</div>
+
 

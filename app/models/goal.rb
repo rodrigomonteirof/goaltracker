@@ -11,4 +11,16 @@ class Goal < ActiveRecord::Base
     puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@ Goal.send_alarm called"
   end
 
+  def date_limit(params)
+    if params[:year].present? and params[:month].present?
+      date = DateTime.new(params[:year].to_i, params[:month].to_i).end_of_month
+    end
+
+    if date.blank? or date >= DateTime.new(DateTime.now.year, DateTime.now.month).end_of_month
+      date = DateTime.now
+    end
+
+    date
+  end
+
 end
