@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
   def show
     @goal_history = GoalHistory.new
     @goal_history.goal = @goal
-    @date_limit = @goal.date_limit(params)
+    @available_days = @goal.available_days(date_limit)
   end
 
   def new
@@ -43,11 +43,24 @@ class GoalsController < ApplicationController
     redirect_to goals_url
   end
 
+  def date_limit
+    if params[:year].present? and params[:month].present?
+      date_limit = DateTime.new(params[:year].to_i, params[:month].to_i).end_of_month
+    end
+
+    if date_limit.blank? or date_limit >= DateTime.new(DateTime.now.year, DateTime.now.month).end_of_month
+      date_limit = DateTime.now
+    end
+
+    date_limit
+  end
+
   private
     def set_goal
       @goal = Goal.find(params[:id])
 
       unless @goal.user == current_user
+        @goal = nil
         redirect_to action: "index"
       end
     end
@@ -55,5 +68,4 @@ class GoalsController < ApplicationController
     def goal_params
       params.require(:goal).permit(:name, :description, :start_date, :alarm_hour, :frequency, :frequency_type, :until_date)
     end
-
 end
