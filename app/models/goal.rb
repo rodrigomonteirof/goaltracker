@@ -12,13 +12,13 @@ class Goal < ActiveRecord::Base
   end
 
   def available_days(date_limit)
-    days = Array.new
+    dates = Array.new
 
     for i in 1..date_limit.day
-      days << DateTime.new(date_limit.year, date_limit.month, i)
+      dates << DateTime.new(date_limit.year, date_limit.month, i)
     end
 
-    days
+    dates
   end
 
 end
