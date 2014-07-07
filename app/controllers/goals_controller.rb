@@ -46,6 +46,10 @@ class GoalsController < ApplicationController
   private
     def set_goal
       @goal = Goal.find(params[:id])
+
+      unless @goal.user == current_user
+        redirect_to action: "index"
+      end
     end
 
     def goal_params
