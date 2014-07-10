@@ -15,7 +15,7 @@ class Goal < ActiveRecord::Base
     dates = Array.new
 
     for i in 1..date_limit.day
-      dates << DateTime.new(date_limit.year, date_limit.month, i)
+      dates << Date.new(date_limit.year, date_limit.month, i)
     end
 
     dates

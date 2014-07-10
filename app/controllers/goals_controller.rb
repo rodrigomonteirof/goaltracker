@@ -45,11 +45,11 @@ class GoalsController < ApplicationController
 
   def date_limit
     if params[:year].present? and params[:month].present?
-      date_limit = DateTime.new(params[:year].to_i, params[:month].to_i).end_of_month
+      date_limit = Date.new(params[:year].to_i, params[:month].to_i).end_of_month
     end
 
-    if date_limit.blank? or date_limit >= DateTime.new(DateTime.now.year, DateTime.now.month).end_of_month
-      date_limit = DateTime.now
+    if date_limit.blank? or date_limit >= Date.today.end_of_month
+      date_limit = Date.today
     end
 
     date_limit

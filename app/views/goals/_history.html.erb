@@ -1,14 +1,10 @@
 <% history = @goal.goal_histories.find_by date: date %>
 
-<div id="div_<%= date %>">
-
 <% if history.present? and not history.response.nil? %>
 
-  <h3><%= date %> - <%= history.response %></h3>
+  <%= history.response %>
 
 <% else %>
-
-  <h3><%= date %></h3>
 
   <%= form_for [@goal_history.goal, @goal_history], :html => {:id => "form_#{date}" }, :remote => true do |f| %>
     <%= f.hidden_field :date, :value => date %>
@@ -19,7 +15,5 @@
   <% end %>
 
 <% end %>
-
-</div>
 
 
