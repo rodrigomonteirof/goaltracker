@@ -7,11 +7,6 @@ Goaltracker::Application.routes.draw do
   match "login", to: 'users#login', via: :get
   match "login", to: 'users#do_login', via: :post
 
-resque_web_constraint = lambda { |request| request.remote_ip == '127.0.0.1' }
-constraints resque_web_constraint do
-  mount ResqueWeb::Engine => "/resque_web"
-end
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

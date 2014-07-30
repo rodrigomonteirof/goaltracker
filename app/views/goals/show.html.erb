@@ -14,11 +14,11 @@
   <div class="col-md-12 text-center">
     <div class="well controls">
       <%= link_to goal_path(date: @available_days.last - 1.month), class: "btn btn-default" do %>
-        <i class="glyphicon glyphicon-backward"></i>
+        <i class="glyphicon glyphicon-backward"><-</i>
       <% end %>
       <%= "#{@available_days.last.strftime("%B")} #{@available_days.last.year}" %>
       <%= link_to goal_path(date: @available_days.last + 1.month), class: "btn btn-default" do %>
-        <i class="glyphicon glyphicon-forward"></i>
+        <i class="glyphicon glyphicon-forward">-></i>
       <% end %>
     </div>
   </div>

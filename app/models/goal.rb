@@ -15,10 +15,14 @@ class Goal < ActiveRecord::Base
     dates = Array.new
 
     for i in 1..date_limit.day
-      dates << Date.new(date_limit.year, date_limit.month, i)
+      date = Date.new(date_limit.year, date_limit.month, i)
+      dates << date
     end
 
     dates
+  end
+
+  def remove
   end
 
 end
