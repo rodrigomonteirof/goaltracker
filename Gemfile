@@ -50,5 +50,5 @@ gem 'rspec'
 # Project #
 ###########
 
-# gem "resque", "~> 2.0.0.pre.1", github: "resque/resque"
-# gem 'resque-web', require: 'resque_web'
+gem 'sidekiq'
+gem 'mailcatcher'

@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      UserMailer.confirm_email(@user).deliver
+      UserMailerWorker.perform_async(@user.id)
       redirect_to "/", notice: 'User was successfully created.'
     else
       render action: 'new'

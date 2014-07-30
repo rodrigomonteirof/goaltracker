@@ -7,6 +7,9 @@ Goaltracker::Application.routes.draw do
   match "login", to: 'users#login', via: :get
   match "login", to: 'users#do_login', via: :post
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

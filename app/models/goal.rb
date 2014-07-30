@@ -8,7 +8,7 @@ class Goal < ActiveRecord::Base
   validates :frequency,   presence: true, numericality: { only_integer: true }
 
   def send_alarm
-    puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@ Goal.send_alarm called"
+    puts "Goal.send_alarm called"
   end
 
   def available_days(date_limit)
@@ -16,13 +16,16 @@ class Goal < ActiveRecord::Base
 
     for i in 1..date_limit.day
       date = Date.new(date_limit.year, date_limit.month, i)
-      dates << date
+      if weekdays.include? date.wday
+        dates << date
+      end
     end
 
     dates
   end
 
-  def remove
+  def weekdays
+    [1,2,3,4,5]
   end
 
 end
