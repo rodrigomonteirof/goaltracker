@@ -11,7 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630162222) do
+ActiveRecord::Schema.define(version: 20140804184155) do
+
+  create_table "annotations", force: true do |t|
+    t.text     "text"
+    t.integer  "goal_history_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "goal_histories", force: true do |t|
     t.date     "date"

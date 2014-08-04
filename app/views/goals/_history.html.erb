@@ -4,6 +4,10 @@
 
   <%= history.response %>
 
+  <% if history.annotation.present? %>
+    true annotation
+  <% end %>
+
 <% else %>
 
   <%= form_for [@goal_history.goal, @goal_history], :html => {:id => "form_#{date}" }, :remote => true do |f| %>

@@ -7,10 +7,6 @@ class Goal < ActiveRecord::Base
   validates :alarm_hour,  presence: true
   validates :frequency,   presence: true, numericality: { only_integer: true }
 
-  def send_alarm
-    puts "Goal.send_alarm called"
-  end
-
   def available_days(date_limit)
     dates = Array.new
 
