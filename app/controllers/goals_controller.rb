@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
   def show
     @goal_history = GoalHistory.new
     @goal_history.goal = @goal
-    @available_days = @goal.available_days(date_limit)
+    @available_days = @goal.available_days(params[:date])
   end
 
   def new
@@ -41,18 +41,6 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
     redirect_to goals_url
-  end
-
-  def date_limit
-    if params[:date].present?
-      date_limit = Date.parse(params[:date])#.end_of_month
-    end
-
-    if date_limit.blank? or date_limit >= Date.today.end_of_month
-      date_limit = Date.today
-    end
-
-    date_limit
   end
 
   private

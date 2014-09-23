@@ -1,7 +1,7 @@
 <%= form_for(@goal) do |f| %>
   <% if @goal.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@goal.errors.count, "error") %> prohibited this goal from being saved:</h2>
+      <h2><%= pluralize(@goal.errors.count, "error") %> <%= t('goal_errors')%></h2>
 
       <ul>
       <% @goal.errors.full_messages.each do |msg| %>
@@ -22,23 +22,23 @@
   <div class="field">
     <%= f.label :start_date %><br>
     <%= f.text_field :start_date %>
-  </div>  
+  </div>
   <div class="field">
     <%= f.label :alarm_hour %><br>
     <%= f.text_field :alarm_hour %>
-  </div>    
+  </div>
   <div class="field">
     <%= f.label :frequency %><br>
     <%= f.text_field :frequency %>
-  </div>    
+  </div>
 <div class="field">
     <%= f.label :frequency_type %><br>
     <%= f.text_field :frequency_type %>
-  </div>      
+  </div>
   <div class="field">
     <%= f.label :until_date %><br>
     <%= f.text_field :until_date %>
-  </div>      
+  </div>
   <div class="actions">
     <%= f.submit %>
   </div>

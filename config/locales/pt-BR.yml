@@ -1,8 +1,11 @@
 pt-BR:
-  hello: "Ola Mundo"
+  hello: 'Ola Mundo'
   user_mailer:
     subject: 'Bem vindo subject'
     title: 'Bem vindo title'
     body: 'body'
     confirm_link_html: 'Para você começar a usar o site, acesse o link: %{link}'
     thanks_html: 'Obrigado por se cadastrar no %{link}.'
+  login: 'Entrar'
+  logout: 'Sair'
+  sign_in: 'Registrar'

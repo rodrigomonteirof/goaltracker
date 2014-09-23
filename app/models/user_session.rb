@@ -9,7 +9,7 @@ class UserSession
     @email = attributes[:email]
     @password = attributes[:password]
   end
-  
+
   def authenticate
     user = User.authenticate(@email, @password)
     if user.present?

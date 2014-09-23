@@ -46,6 +46,8 @@ end
 
 group :development, :test do
   gem 'rspec-rails', '~> 3.0.0'
+  gem 'byebug'
+  gem "factory_girl_rails"
 end
 
 ###########

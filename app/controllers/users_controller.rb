@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.save
       UserConfirmMailWorker.perform_async(@user.id)
-      redirect_to "/", notice: 'User was successfully created.'
+      redirect_to "/login", notice: 'User was successfully created.'
     else
       render action: 'new'
     end

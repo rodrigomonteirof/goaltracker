@@ -6,6 +6,7 @@ Goaltracker::Application.routes.draw do
   resources :users
   match "login", to: 'users#login', via: :get
   match "login", to: 'users#do_login', via: :post
+  match "logout", to: 'users#logout', via: :get
 
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'

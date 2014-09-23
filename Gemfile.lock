@@ -29,6 +29,9 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     builder (3.2.2)
+    byebug (3.2.0)
+      columnize (~> 0.8)
+      debugger-linecache (~> 1.2)
     celluloid (0.15.2)
       timers (~> 1.1.0)
     coffee-rails (4.0.1)
@@ -38,12 +41,19 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.7.0)
+    columnize (0.8.9)
     connection_pool (2.0.0)
     daemons (1.1.9)
+    debugger-linecache (1.2.0)
     diff-lcs (1.2.5)
     erubis (2.7.0)
     eventmachine (1.0.3)
     execjs (2.0.2)
+    factory_girl (4.4.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.4.1)
+      factory_girl (~> 4.4.0)
+      railties (>= 3.0.0)
     haml (4.0.5)
       tilt
     hike (1.2.3)
@@ -171,7 +181,9 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  byebug
   coffee-rails (~> 4.0.0)
+  factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
   mailcatcher
