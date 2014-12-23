@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => 'no-reply@goaltracker.com'
+  default from: 'no-reply@goaltracker.com'
 
   def confirm_email(user)
     @user = user
@@ -19,5 +19,4 @@ class UserMailer < ActionMailer::Base
       subject: 'Objetivo de hoje ainda não foi preenchido'
     )
   end
-
 end

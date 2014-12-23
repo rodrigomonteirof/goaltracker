@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
   end
 
   def encrypt_password
-    self.password = Digest::MD5.hexdigest(self.password)
+    self.password = Digest::MD5.hexdigest(password)
   end
 
   def generate_token

@@ -9,7 +9,6 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sidekiq'
-gem 'postgres'
 gem 'unicorn'
 
 group :doc do
@@ -17,10 +16,10 @@ group :doc do
 end
 
 group :development, :test do
+  gem 'rubocop', require: false
   gem 'rspec-rails', '~> 3.0.0'
   gem 'byebug'
-  gem "factory_girl_rails"
+  gem 'factory_girl_rails'
   gem 'sqlite3'
   gem 'mailcatcher'
 end
-

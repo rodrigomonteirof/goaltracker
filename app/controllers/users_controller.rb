@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
-  before_action :require_no_authentication, :only => [:new, :create]
-  before_action :can_change, :only => [:edit, :update]
+  before_action :require_no_authentication, only: [:new, :create]
+  before_action :can_change, only: [:edit, :update]
 
   def show
   end
@@ -15,7 +15,7 @@ class UsersController < ApplicationController
 
     if @user.save
       UserConfirmMailWorker.perform_async(@user.id)
-      redirect_to "/login", notice: 'User was successfully created.'
+      redirect_to '/login', notice: 'User was successfully created.'
     else
       render action: 'new'
     end
@@ -26,7 +26,7 @@ class UsersController < ApplicationController
 
   def update
     if @user.update(user_params)
-      redirect_to "/", notice: 'User was successfully created.'
+      redirect_to '/', notice: 'User was successfully created.'
     else
       render action: 'edit'
     end
@@ -36,32 +36,38 @@ class UsersController < ApplicationController
   end
 
   def do_login
-    @session = UserSession.new(session, {email: params[:user][:email], password: params[:user][:password]})
+    @session = UserSession.new(
+      session,
+      email: params[:user][:email],
+      password: params[:user][:password]
+    )
+
     @user = @session.authenticate
-    if @user.present?
-      redirect_to goals_path
-    else
-      render :login
-    end
+
+    redirect_to goals_path if @user.present?
+    render :login
   end
 
   private
-    def set_user
-      @user = User.find(params[:id])
-    end
 
-    def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    end
+  def set_user
+    @user = User.find(params[:id])
+  end
 
-    def can_change
-      unless user_signed? && current_user == user
-        redirect_to root_path
-      end
-    end
+  def user_params
+    params.require(:user).permit(
+      :name,
+      :email,
+      :password,
+      :password_confirmation
+    )
+  end
 
-    def user
-      @user ||= User.find(params[:id])
-    end
+  def can_change
+    redirect_to root_path unless user_signed? && current_user == user
+  end
 
+  def user
+    @user ||= User.find(params[:id])
+  end
 end

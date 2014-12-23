@@ -1,0 +1,10 @@
+AllCops:
+  Include:
+    - config.ru
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**/*
+    - lib/**/*
+Documentation:
+  Enabled: false

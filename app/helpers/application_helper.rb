@@ -1,9 +1,21 @@
 module ApplicationHelper
   def login_bar
     if user_signed_in?
-      link_to(t('logout'), '/logout')
+      logout_link
     else
-      raw "#{link_to(t('login'), 'login')} | #{link_to(t('sign_up'), 'users/new')}"
+      raw "#{login_link} | #{signup_link}"
     end
+  end
+
+  def login_link
+    link_to(t('login'), login_path)
+  end
+
+  def signup_link
+    link_to(t('sign_up'), new_user_path)
+  end
+
+  def logout_link
+    link_to(t('logout'), logout_path)
   end
 end

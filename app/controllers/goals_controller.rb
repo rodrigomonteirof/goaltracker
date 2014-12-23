@@ -23,7 +23,7 @@ class GoalsController < ApplicationController
     @goal = Goal.new(goal_params)
     @goal.user = current_user
 
-    if @goal.valid? and @goal.save
+    if @goal.valid? && @goal.save
       redirect_to @goal, notice: 'Goal was successfully created.'
     else
       render action: 'new'
@@ -31,7 +31,7 @@ class GoalsController < ApplicationController
   end
 
   def update
-    if @goal.valid? and @goal.update(goal_params)
+    if @goal.valid? && @goal.update(goal_params)
       redirect_to @goal, notice: 'Goal was successfully updated.'
     else
       render action: 'edit'
@@ -44,16 +44,22 @@ class GoalsController < ApplicationController
   end
 
   private
-    def set_goal
-      @goal = Goal.find(params[:id])
 
-      unless @goal.user == current_user
-        @goal = nil
-        redirect_to action: "index"
-      end
-    end
+  def set_goal
+    @goal = Goal.find(params[:id])
 
-    def goal_params
-      params.require(:goal).permit(:name, :description, :start_date, :alarm_hour, :frequency, :frequency_type, :until_date)
-    end
+    redirect_to action: 'index' unless @goal.user == current_user
+  end
+
+  def goal_params
+    params.require(:goal).permit(
+      :name,
+      :description,
+      :start_date,
+      :alarm_hour,
+      :frequency,
+      :frequency_type,
+      :until_date
+    )
+  end
 end

@@ -4,7 +4,7 @@ class UserSession
 
   validates_presence_of :email, :password
 
-  def initialize(session, attributes={})
+  def initialize(session, attributes = {})
     @session = session
     @email = attributes[:email]
     @password = attributes[:password]
@@ -40,5 +40,4 @@ class UserSession
   def destroy
     @session[:user_id] = nil
   end
-
 end
