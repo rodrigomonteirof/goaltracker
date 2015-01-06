@@ -23,7 +23,10 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
+  adapter: postgresql
+  host: localhost
+  database: goaltracker
+  username: goaltracker_user
+  password: #
   pool: 5
   timeout: 5000

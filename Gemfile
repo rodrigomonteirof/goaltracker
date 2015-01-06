@@ -10,12 +10,14 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sidekiq'
 gem 'unicorn'
+gem 'pg'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development, :test do
+  gem "rubycritic", :require => false
   gem 'rubocop', require: false
   gem 'rspec-rails', '~> 3.0.0'
   gem 'byebug'
