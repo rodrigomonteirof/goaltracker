@@ -2,7 +2,7 @@ class UserSession
   include ActiveModel::Model
   attr_accessor :email, :password
 
-  validates_presence_of :email, :password
+  validates :email, :password, presence: true
 
   def initialize(session, attributes = {})
     @session = session
