@@ -10,29 +10,9 @@
   <%= @goal.description %>
 </p>
 
-<div class="row">
-  <div class="col-md-12 text-center">
-    <div class="well controls">
-      <%= link_to goal_path(date: @available_days.last - 1.month), class: "btn btn-default" do %>
-        <i class="glyphicon glyphicon-backward"><-</i>
-      <% end %>
-      <%= "#{@available_days.last.strftime("%B")} #{@available_days.last.year}" %>
-      <%= link_to goal_path(date: @available_days.last + 1.month), class: "btn btn-default" do %>
-        <i class="glyphicon glyphicon-forward">-></i>
-      <% end %>
-    </div>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-12">
-    <%= calendar @available_days.last do |date| %>
-      <%= date.day %>
-      <% if @available_days.include? date  %>
-        <%= render 'history', :date => date %>
-      <% end %>
-    <% end %>
-  </div>
-</div>
+<%= month_calendar do |date| %>
+  <%= render 'history', :date => date %>
+<% end %>
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |
 <%= link_to 'Back', goals_path %>

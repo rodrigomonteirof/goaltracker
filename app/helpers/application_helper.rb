@@ -3,16 +3,12 @@ module ApplicationHelper
     if user_signed_in?
       logout_link
     else
-      raw "#{login_link} | #{signup_link}"
+      login_facebook
     end
   end
 
-  def login_link
-    link_to(t('login'), login_path)
-  end
-
-  def signup_link
-    link_to(t('sign_up'), new_user_path)
+  def login_facebook
+    link_to(t('facebook'), 'auth/facebook')
   end
 
   def logout_link

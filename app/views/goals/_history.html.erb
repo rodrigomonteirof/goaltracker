@@ -1,3 +1,5 @@
+<p><%= date %></p>
+
 <% history = @goal.goal_histories.find_by date: date %>
 
 <% if history.present? and not history.response.nil? %>

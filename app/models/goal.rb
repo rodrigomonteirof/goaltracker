@@ -1,4 +1,6 @@
 class Goal < ActiveRecord::Base
+  extend SimpleCalendar
+
   belongs_to :user
   has_many :goal_histories
 
@@ -12,7 +14,7 @@ class Goal < ActiveRecord::Base
     date_limit = date_limit(date)
 
     date_limit.day.times do |day|
-      date = Date.new(date_limit.year, date_limit.month, day)
+      date = Date.new(date_limit.year, date_limit.month, day + 1)
       dates << date if weekdays.include? date.wday
     end
 

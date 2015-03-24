@@ -1,20 +1,25 @@
 class User < ActiveRecord::Base
   has_many :goals
 
-  validates :email, uniqueness: true
-  validates :password, confirmation: true
+  def self.find_or_create(auth)
+    user = find_or_create_by(provider: auth.provider, uid: auth.uid)
 
-  before_save :encrypt_password, :generate_token
+    user.assign_attributes(
+      name: auth.info.name,
+      email: auth.info.email,
+      photo_url: auth.info.image,
+      access_token: auth.credentials.token
+    )
 
-  def self.authenticate(email, password)
-    User.find_by email: email, password: Digest::MD5.hexdigest(password)
+    user.save!
+    user
   end
 
-  def encrypt_password
-    self.password = Digest::MD5.hexdigest(password)
+  def assign_session(session)
+    session[:user_id] = id
   end
 
-  def generate_token
-    self.confirmation_token = SecureRandom.urlsafe_base64
+  def destroy_session(session)
+    session[:user_id] = nil
   end
 end

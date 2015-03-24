@@ -6,5 +6,6 @@ AllCops:
     - config/**/*
     - script/**/*
     - lib/**/*
+    - bin/**/*
 Documentation:
   Enabled: false

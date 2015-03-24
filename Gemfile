@@ -13,13 +13,14 @@ gem 'unicorn'
 gem 'pg'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem 'simple_calendar', '~> 1.1.0'
 
 group :doc do
   gem 'sdoc', require: false
 end
 
 group :development, :test do
-  gem "rubycritic", :require => false
+  gem 'rubycritic', :require => false
   gem 'rubocop', require: false
   gem 'rspec-rails', '~> 3.0.0'
   gem 'byebug'
@@ -27,4 +28,5 @@ group :development, :test do
   gem 'sqlite3'
   gem 'mailcatcher'
   gem 'dotenv'
+  gem 'awesome_print'
 end
