@@ -14,15 +14,10 @@ class Goal < ActiveRecord::Base
     date_limit = date_limit(date)
 
     date_limit.day.times do |day|
-      date = Date.new(date_limit.year, date_limit.month, day + 1)
-      dates << date if weekdays.include? date.wday
+      dates << Date.new(date_limit.year, date_limit.month, day + 1)
     end
 
     dates
-  end
-
-  def weekdays
-    [1, 2, 3, 4, 5]
   end
 
   def date_limit(date)

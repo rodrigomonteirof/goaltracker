@@ -7,8 +7,7 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal_history = GoalHistory.new
-    @goal_history.goal = @goal
+    @goal_history = GoalHistory.new(goal: @goal)
     @available_days = @goal.available_days(params[:date])
   end
 
