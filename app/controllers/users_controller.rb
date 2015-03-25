@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   before_action :require_no_authentication, only: [:new, :create]
   before_action :can_change, only: [:edit, :update]
 
-  def login_facebook
+  def oauth_login
     user = User.find_or_create(auth)
     user.assign_session(session)
 

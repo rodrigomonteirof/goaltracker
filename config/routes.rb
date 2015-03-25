@@ -11,5 +11,5 @@ Rails.application.routes.draw do
   require 'sidekiq/web'
   mount Sidekiq::Web => '/sidekiq'
 
-  get "/auth/:provider/callback" => "users#login_facebook", as: :auth_callback
+  get '/auth/:provider/callback' => 'users#oauth_login'
 end

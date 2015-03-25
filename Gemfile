@@ -13,6 +13,8 @@ gem 'unicorn'
 gem 'pg'
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
+
 gem 'simple_calendar', '~> 1.1.0'
 
 group :doc do
