@@ -21,6 +21,7 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     @goal.user = current_user
+    @goal.frequency = GoalFrequency.new
 
     if @goal.valid? && @goal.save
       redirect_to @goal, notice: 'Goal was successfully created.'

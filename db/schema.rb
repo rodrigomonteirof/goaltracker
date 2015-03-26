@@ -11,13 +11,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326134514) do
+ActiveRecord::Schema.define(version: 20150326162844) do
 
-  create_table "goal_annotations", force: :cascade do |t|
-    t.text     "text"
-    t.integer  "goal_history_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "goal_frequencies", force: :cascade do |t|
+    t.string  "value"
+    t.integer "goal_id"
+    t.string  "type"
   end
 
   create_table "goal_histories", force: :cascade do |t|
@@ -28,13 +27,18 @@ ActiveRecord::Schema.define(version: 20150326134514) do
     t.datetime "updated_at"
   end
 
+  create_table "goal_history_annotations", force: :cascade do |t|
+    t.text     "text"
+    t.integer  "goal_history_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "goals", force: :cascade do |t|
-    t.string   "name",           limit: 255
+    t.string   "name",        limit: 255
     t.text     "description"
     t.date     "start_date"
     t.time     "alarm_hour"
-    t.integer  "frequency"
-    t.text     "frequency_type"
     t.date     "until_date"
     t.integer  "user_id"
     t.datetime "created_at"
