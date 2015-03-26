@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150324203809) do
+ActiveRecord::Schema.define(version: 20150326134514) do
 
-  create_table "annotations", force: :cascade do |t|
+  create_table "goal_annotations", force: :cascade do |t|
     t.text     "text"
     t.integer  "goal_history_id"
     t.datetime "created_at"

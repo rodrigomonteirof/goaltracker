@@ -2,7 +2,7 @@ class Goal < ActiveRecord::Base
   extend SimpleCalendar
 
   belongs_to :user
-  has_many :goal_histories
+  has_many :histories, class_name: GoalHistory
 
   validates :name,        presence: true, length: { in: 4..20 }
   validates :start_date,  presence: true
