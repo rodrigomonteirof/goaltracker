@@ -11,7 +11,7 @@
 </p>
 
 <%= month_calendar do |date| %>
-  <%= render 'history', :date => date %>
+  <%= render 'history', :date => date if @available_days.include?(date) %>
 <% end %>
 
 <%= link_to 'Edit', edit_goal_path(@goal) %> |

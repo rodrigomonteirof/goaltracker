@@ -6,8 +6,6 @@ class Goal < ActiveRecord::Base
   has_one :frequency, class_name: GoalFrequency
 
   validates :name,        presence: true, length: { in: 4..20 }
-  validates :start_date,  presence: true
-  validates :alarm_hour,  presence: true
 
   def available_days(date = nil)
     dates = []

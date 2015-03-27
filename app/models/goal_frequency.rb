@@ -4,4 +4,8 @@ class GoalFrequency < ActiveRecord::Base
   def filter_dates(dates)
     dates
   end
+
+  def parse_value
+    value.scan(/[0-9]/).map(&:to_i)
+  end
 end
