@@ -6,6 +6,6 @@ class GoalFrequency < ActiveRecord::Base
   end
 
   def parse_value
-    value.scan(/[0-9]/).map(&:to_i)
+    value.scan(/\d*(?:\.\d+)?/).reject!(&:empty?).map(&:to_i)
   end
 end
