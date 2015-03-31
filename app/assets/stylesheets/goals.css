@@ -43,11 +43,3 @@
   font-size:16px;
   font-weight:bold;
 }
-
-.day.prev-month{
-  visibility: hidden;
-}
-
-.day.next-month{
-  visibility: hidden;
-}

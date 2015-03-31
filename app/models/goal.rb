@@ -9,22 +9,19 @@ class Goal < ActiveRecord::Base
 
   def available_days(date = nil)
     dates = []
-    date_limit = date_limit(date)
+    date = date_limit(date)
 
-    date_limit.day.times do |day|
-      dates << Date.new(date_limit.year, date_limit.month, day + 1)
+    date.day.times do |day|
+      dates << Date.new(date.year, date.month, day + 1)
     end
 
     frequency.filter_dates(dates)
   end
 
   def date_limit(date)
-    date_limit = Date.parse(date) if date.present?
+    limit = Date.parse(date) if date.present?
+    limit = Date.today if limit.blank? || limit >= Date.today.end_of_month
 
-    if date_limit.blank? || date_limit >= Date.today.end_of_month
-      date_limit = Date.today
-    end
-
-    date_limit
+    limit
   end
 end
