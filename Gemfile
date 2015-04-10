@@ -30,4 +30,5 @@ group :development, :test do
   gem 'mailcatcher'
   gem 'dotenv'
   gem 'awesome_print'
+  gem 'simplecov'
 end
