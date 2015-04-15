@@ -6,6 +6,7 @@ pt-BR:
     body: 'body'
     confirm_link_html: 'Para você começar a usar o site, acesse o link: %{link}'
     thanks_html: 'Obrigado por se cadastrar no %{link}.'
-  login: 'Entrar'
+  login_facebook: 'Login Facebook'
+  login_google: 'Login Google'
   logout: 'Sair'
   sign_in: 'Registrar'
