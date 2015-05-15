@@ -1,4 +1,4 @@
-class GoalFrequency < ActiveRecord::Base
+class Goal::Frequency < ActiveRecord::Base
   belongs_to :goal
 
   def filter_dates(dates)
