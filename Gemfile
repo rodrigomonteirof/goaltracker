@@ -31,4 +31,5 @@ group :development, :test do
   gem 'dotenv'
   gem 'awesome_print'
   gem 'simplecov'
+  gem 'mutant-rspec'
 end
