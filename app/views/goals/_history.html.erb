@@ -18,7 +18,7 @@
 
 <% else %>
 
-  <%= form_for [@goal_history.goal, @goal_history], :html => {:id => "form_#{date}" }, :remote => true do |f| %>
+  <%= form_for @goal_history, url: {action: 'create_history'}, :html => {:id => "form_#{date}" }, :remote => true do |f| %>
     <%= f.hidden_field :date, :value => date %>
     <%= f.radio_button :response, true, :onclick => "submitForm('#{date}');"%>
     <%= f.label "true" %>

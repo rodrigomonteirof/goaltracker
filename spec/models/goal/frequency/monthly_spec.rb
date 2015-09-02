@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GoalFrequencyMonthly do
+describe Goal::Frequency::Monthly do
   let(:d1) { Date.parse('2015-03-01') }
   let(:d2) { Date.parse('2015-03-02') }
   let(:d3) { Date.parse('2015-03-03') }

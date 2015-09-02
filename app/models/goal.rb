@@ -2,8 +2,8 @@ class Goal < ActiveRecord::Base
   extend SimpleCalendar
 
   belongs_to :user
-  has_many :histories, class_name: GoalHistory
-  has_one :frequency, class_name: GoalFrequency
+  has_many :histories, class_name: Goal::History
+  has_one :frequency, class_name: Goal::Frequency
 
   validates :name,        presence: true, length: { in: 4..20 }
 

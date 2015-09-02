@@ -32,7 +32,7 @@ describe Goal do
   describe '#available_days' do
     subject { described_class.new(frequency: frequency).available_days(date) }
     let(:date) { '2015-03-02' }
-    let(:frequency) { GoalFrequency.new }
+    let(:frequency) { Goal::Frequency.new }
 
     it 'return days of month until today' do
       is_expected.to eq([Date.parse('2015-03-01'), Date.parse('2015-03-02')])

@@ -7,7 +7,7 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal_history = GoalHistory.new(goal: @goal)
+    @goal_history = Goal::History.new(goal: @goal)
     @available_days = @goal.available_days(params[:date])
   end
 
@@ -21,7 +21,7 @@ class GoalsController < ApplicationController
   def create
     @goal = Goal.new(goal_params)
     @goal.user = current_user
-    @goal.frequency = GoalFrequency.new
+    @goal.frequency = Goal::Frequency.new
 
     if @goal.valid? && @goal.save
       redirect_to @goal, notice: 'Goal was successfully created.'
@@ -41,6 +41,18 @@ class GoalsController < ApplicationController
   def destroy
     @goal.destroy
     redirect_to goals_url
+  end
+
+  def create_history
+    @goal_history = Goal::History.where(
+      goal_id: params[:goal_id],
+      date: params[:goal_history][:date]
+    ).first_or_create
+
+    @goal_history.response = params[:goal_history][:response]
+    @goal_history.save!
+
+    head :ok
   end
 
   private

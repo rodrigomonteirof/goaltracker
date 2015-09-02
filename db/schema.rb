@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(version: 20150326162844) do
   end
 
   create_table "goals", force: :cascade do |t|
-    t.string   "name",        limit: 255
+    t.string   "name"
     t.text     "description"
     t.date     "start_date"
     t.time     "alarm_hour"
@@ -48,9 +48,9 @@ ActiveRecord::Schema.define(version: 20150326162844) do
   create_table "users", force: :cascade do |t|
     t.text     "name"
     t.text     "email"
-    t.string   "password",           limit: 255
+    t.string   "password"
     t.datetime "confirmed_at"
-    t.string   "confirmation_token", limit: 255
+    t.string   "confirmation_token"
     t.string   "provider"
     t.string   "uid"
     t.string   "access_token"

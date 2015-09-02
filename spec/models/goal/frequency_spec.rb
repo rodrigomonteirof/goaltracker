@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GoalFrequency do
+describe Goal::Frequency do
   describe '#filter_dates' do
     subject { described_class.new.filter_dates(dates) }
     let(:dates) { [Date.today] }

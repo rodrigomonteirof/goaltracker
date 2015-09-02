@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GoalFrequencyWeekly do
+describe Goal::Frequency::Weekly do
   let(:monday) { Date.parse('2015-03-16') }
   let(:tuesday) { Date.parse('2015-03-17') }
   let(:wednesday) { Date.parse('2015-03-18') }
